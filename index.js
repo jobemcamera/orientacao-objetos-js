@@ -1,5 +1,4 @@
-// Classe Cliente com os seus atributos/propriedades
-class Cliente {
+class Cliente { // Classe Cliente com os seus atributos/propriedades
     nome;
     cpf;
 }
@@ -12,13 +11,13 @@ class ContaCorrente {
     sacar(valor) { // Método sacar
         if (this._saldo >= valor) {
             this._saldo -= valor;
+            return valor; // Para atribuir um valor de retorno para uma outra variável, necessário a palavra "return"
         }
     }
     
     depositar(valor) { // Método depositar
-        if (valor > 0) {
-            this._saldo += valor;
-        }
+        if (valor <= 0) return; // Earlier return
+        this._saldo += valor;
     }
 }
 
@@ -35,4 +34,9 @@ const contaCorrenteJobe = new ContaCorrente();
 contaCorrenteJobe.agencia = 1001;
 
 contaCorrenteJobe.depositar(100);
-contaCorrenteJobe.sacar(50);
+contaCorrenteJobe.depositar(100);
+contaCorrenteJobe.depositar(100);
+
+const valorSacado = contaCorrenteJobe.sacar(50);
+
+console.log(`Valor sacado: ${valorSacado}`)
