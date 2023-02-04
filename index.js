@@ -9,19 +9,19 @@ const cliente2 = new Cliente();
 cliente2.nome = 'Ana';
 cliente2.cpf = 22211133309;
 
-const contaCorrenteJobe = new ContaCorrente();
-contaCorrenteJobe.agencia = 1001;
+const conta1 = new ContaCorrente();
+conta1.agencia = 1001;
+conta1.cliente = cliente1;
+conta1.depositar(500);
 
-console.log(contaCorrenteJobe);
+const conta2 = new ContaCorrente();
+conta2.agencia = 1002;
+conta2.cliente = cliente2;
 
-contaCorrenteJobe.depositar(100);
-contaCorrenteJobe.depositar(100);
-contaCorrenteJobe.depositar(100);
+console.log(conta1);
+console.log(conta2);
 
-console.log(`Saldo da CC: ${contaCorrenteJobe._saldo}`);
+conta1.transferir(200, conta2);
 
-const valorSacado = contaCorrenteJobe.sacar(50);
-
-console.log(`Valor sacado: ${valorSacado}`)
-
-console.log(`Saldo da CC: ${contaCorrenteJobe._saldo}`);
+console.log(conta1);
+console.log(conta2);
