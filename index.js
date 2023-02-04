@@ -5,9 +5,11 @@ const cliente1 = new Cliente(); // Criando um novo Objeto / instanciando o Objet
 cliente1.nome = 'Jobe'; // Atribuição dos valores nas propriedades do Objeto
 cliente1.cpf = 11122233309;
 
+/*
 const cliente2 = new Cliente();
 cliente2.nome = 'Ana';
 cliente2.cpf = 22211133309;
+*/
 
 const conta1 = new ContaCorrente();
 conta1.agencia = 1001;
@@ -16,7 +18,9 @@ conta1.depositar(500);
 
 const conta2 = new ContaCorrente();
 conta2.agencia = 1002;
-conta2.cliente = cliente2;
+conta2.cliente = new Cliente(); // instânciar o objeto conta2.cliente com um objeto diretamente
+conta2.cliente.nome = "Ana";
+conta2.cliente.cpf = 22211133309;
 
 console.log(conta1);
 console.log(conta2);
