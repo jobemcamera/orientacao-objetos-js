@@ -1,6 +1,7 @@
 import { Cliente } from "./Cliente.js";
 
 export class ContaCorrente {
+    static numeroDeContas = 0; // atributo estático que pode ser alterado em qualquer objeto
     agencia;
     _cliente;
     _saldo = 0; // Proposta: '#' declara um atributo privado. Não irá aparecer no console.log fora do escopo da Classe. '_' convenção de que o campo é "privado".
@@ -19,9 +20,10 @@ export class ContaCorrente {
         return this._saldo;
     }
     
-    constructor(cliente, agencia) {
+    constructor(agencia, cliente) {
         this.agencia = agencia;
         this._cliente = cliente;
+        ContaCorrente.numeroDeContas += 1;  // acessando o atributo estático da classe
     }
 
     sacar(valor) { // Método sacar
