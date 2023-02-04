@@ -1,9 +1,27 @@
+import { Cliente } from "./Cliente.js";
+
 export class ContaCorrente {
     agencia;
-    cliente;
+    
+    _cliente;
+
+    set cliente(novoValor) { // assessor
+        if (novoValor instanceof Cliente) { // só vai atribuir se o _cliente for uma instância de Cliente
+            this._cliente = novoValor;
+        }
+    }
+
+    get cliente() { // assessor
+        return this._cliente;
+    }
+
 
     _saldo = 0; // Proposta: '#' declara um atributo privado. Não irá aparecer no console.log fora do escopo da Classe.
                 // '_' convenção de que o campo é "privado".
+    
+    get saldo() { // assessor
+        return this._saldo;
+    }
     
     sacar(valor) { // Método sacar
         if (this._saldo >= valor) {
@@ -17,7 +35,7 @@ export class ContaCorrente {
         this._saldo += valor;
     }
 
-    transferir(valor, conta) {
+    transferir(valor, conta) { // Método transferir
         const valorSacado = this.sacar(valor);
         conta.depositar(valorSacado);
     }
